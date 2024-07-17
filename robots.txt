@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://sdwyc.github.iohome/sitemap.xml
+Sitemap: https://sdwyc.github.io/sitemap.xml
