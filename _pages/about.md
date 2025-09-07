@@ -19,11 +19,11 @@ social: true # includes social icons at the bottom of the page
 
 Hi! I'm Yinchuan Wang (王银川).
 
-I received bachelor degree in Shandong University of Science and Technology. I am currently pursue the PhD in Shandong University, School of Science and Engineering (山东大学控制科学与工程学院), Jinan, advised by [Chaoqun Wang](https://zychaoqun.wixsite.com/chaoqun) (王超群) and Rui Song (宋锐). I'm now researching on the <u>mapless navigation</u> under <u>offroad navigation, <u>autonomous exploration</u> and LiDAR SLAM</u> for mobile robot. Due to the labortory cooperation, I also know the field for motion planning and mobile manipulation.
+I received bachelor degree in Shandong University of Science and Technology. I am currently pursue the PhD in Shandong University (SDU), School of Science and Engineering, Jinan, advised by [Chaoqun Wang](https://zychaoqun.wixsite.com/chaoqun) (王超群) and Rui Song (宋锐). 
 
-If you are seeking any form of **academic cooperation**, please feel free to email me at [sdwyc@mail.sdu.edu.cn](mailto:sdwyc@mail.sdu.edu.cn).
+I'm now researching on the <u>mapless navigation</u> under <u>offroad navigation, <u>autonomous exploration</u> and LiDAR SLAM</u> for mobile robot. Due to the labortory cooperation, I also know the field for motion planning and mobile manipulation. You can get my recent works in google scholar <a href='https://scholar.google.com/citations?user=Us-5jAQAAAAJ'><img src="https://img.shields.io/badge/GoogleScholar-YinchuanWang-blue"></a>. I will update my recent information in this homepage at my convenience.
 
- My research field includes **Autonomous Navigation, SLAM , Motion Planning under Offroad and Collision Avoidance**. I'm now pursuing more paper publications and communications. You can get my recent works in google scholar <a href='https://scholar.google.com/citations?user=Us-5jAQAAAAJ'><img src="https://img.shields.io/badge/GoogleScholar-YinchuanWang-blue"></a>. I will update my recent information in this homepage at my convenience.
+I'm now pursuing more paper publications and communications. If you are seeking any form of **academic cooperation** or **communication**, please feel free to email me at [sdwyc@mail.sdu.edu.cn](mailto:sdwyc@mail.sdu.edu.cn).
 
 <!-- Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
 

@@ -1,9 +1,42 @@
 ---
 ---
-lang2025selm,
-  title={SELM: From Efficient Autonomous Exploration to Long-term Monitoring in Semantic Level},
-  author={Lang, Fang and Qin, Yongsen and Wang, Yinchuan and Liu, Jin and Wang, Chaoqun and Song, Wei and Zhu, Qiuguo and Song, Rui},
-  journal={IEEE Transactions on Cognitive and Developmental Systems},
+@article{wang2025receding,
+  bibtex_show={true},
+  abbr={T-Mech},
+  title={Receding-Horizon Path Planning for Risk-Free Mapless Navigation in Uneven Terrains},
+  author={Wang, Yinchuan and Zhang, Xiang and Wang, Yuhan and Wang, Chaoqun and Song, Rui and Li, Yibin},
+  abstract={It is an intractable question for the autonomous robot to navigate in uneven terrain, especially without a prior map of the environment. In this situation, the robot must judge where to go and maintain self-safety together, which is challenging for path planning and decision-making module of the robot. To address this problem, this study presents an integrated navigation framework for leading the robot to traverse unknown and uneven terrain and reach a designated goal. We incrementally construct a risk-aware tree during the mapless navigation. The tree nodes are growing on the ground surface while the edges reflect the risk and safety of traversing this edge. The root of the tree moves following robot position for rapid path finding. In addition, we design a receding-horizon strategy for determining where to go in the unknown environment. The valuable tree nodes located at the boundary of the local grid map are filtered to select a series of subgoals. These subgoals guide the robot to reach the final target step by step, and the paths to the subgoals are always optimized by rewiring the risk-aware tree for efficiency and safety. We evaluate our framework in both simulation and real-world experiments. The experimental results show that our approach has higher efficiency and efficacy compared with state-of-the-art methods.},
+  journal={IEEE/ASME Transactions on Mechatronics},
+  year={2025},
+  month={August},
+  doi={10.1109/TMECH.2025.3595395},
+  html={https://ieeexplore.ieee.org/abstract/document/11130611},
+  dimensions={false},
+  google_scholar_id={WF5omc3nYNoC},
+  video={https://youtu.be/LUpDfWUcz9Q},
+  code={https://github.com/SDU-AIR-Group/SEAP},
+  preview={2025TMECH.png},
+  selected={true}
+}
+
+@article{wang2024history,
+  bibtex_show={true},
+  abbr={IROS2025},
+  title={Capsizing-Guided Trajectory Optimization for Autonomous Navigation with Rough Terrain},
+  author={Zhang, Wei and Wang, Yinchuan and Lu, Wangtao and Zhang, Pengyu and Zhang, Xiang and Wang, Yue and Wang, Chaoqun},
+  abstract={It is a challenging task for ground robots to autonomously navigate in harsh environments due to the presence of non-trivial obstacles and uneven terrain. This requires trajectory planning that balances safety and efficiency. The primary challenge is to generate a feasible trajectory that prevents robot from tip-over while ensuring effective navigation. In this paper, we propose a capsizing-aware trajectory planner (CAP) to achieve trajectory planning on the uneven terrain. The tip-over stability of the robot on rough terrain is analyzed. Based on the tip-over stability, we define the traversable orientation, which indicates the safe range of robot orientations. This orientation is then incorporated into a capsizing-safety constraint for trajectory optimization. We employ a graph-based solver to compute a robust and feasible trajectory while adhering to the capsizing-safety constraint. Extensive simulation and real-world experiments validate the effectiveness and robustness of the proposed method. The results demonstrate that CAP outperforms existing state-of-the-art approaches, providing enhanced navigation performance on uneven terrains.},
+  journal={2025 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  location={China Hangzhou},
+  year={2025},
+  dimensions={false},
+  google_scholar_id={ufrVoPGSRksC},
+  video={https://youtu.be/81joZKvpmck},
+  arxiv={https://arxiv.org/pdf/2508.08108},
+  preview={2025IROS.png},
+  selected={true}
+}
+
+
 @article{lang2025selm,
   bibtex_show={true},
   abbr={TCDS},
@@ -56,7 +89,7 @@ lang2025selm,
   google_scholar_id={Tyk-4Ss8FVUC},
   video={https://youtu.be/4B1XmBHgMXM?si=6-Ep6rfhPR_Ewawy},
   preview={2024TIV.png},
-  selected={true}
+  selected={false}
 }
 
 @article{wang2024history,
