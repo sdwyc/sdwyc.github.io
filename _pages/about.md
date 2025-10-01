@@ -6,20 +6,18 @@ permalink: /
 subtitle: PhD in <a href='#'>SDU</a>. Jinan. Field:SLAM, Autonomous Exploration, Mapless navigation in rough terrain.
 
 profile:
-  align: top
+  align: center
   image: author.jpg
-  image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>Jinan, China</p>
+  image_circular: true # crops the image to make it circular
+  more_info: #>
+    #<p>Jinan, China</p>
 
 news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Hi! I'm Yinchuan Wang (王银川).
-
-I received bachelor degree in Shandong University of Science and Technology. I am currently pursue the PhD in Shandong University (SDU), School of Science and Engineering, Jinan, advised by [Chaoqun Wang](https://zychaoqun.wixsite.com/chaoqun) (王超群) and Rui Song (宋锐). 
+Hi! I'm Yinchuan Wang (王银川). I received bachelor degree in Shandong University of Science and Technology. I am currently pursue the PhD in Shandong University (SDU), School of Science and Engineering, Jinan, advised by [Chaoqun Wang](https://zychaoqun.wixsite.com/chaoqun) (王超群) and Rui Song (宋锐). 
 
 I'm now researching on the <u>mapless navigation</u> under <u>offroad navigation, <u>autonomous exploration</u> and LiDAR SLAM</u> for mobile robot. Due to the labortory cooperation, I also know the field for motion planning and mobile manipulation. You can get my recent works in google scholar <a href='https://scholar.google.com/citations?user=Us-5jAQAAAAJ'><img src="https://img.shields.io/badge/GoogleScholar-YinchuanWang-blue"></a>. I will update my recent information in this homepage at my convenience.
 

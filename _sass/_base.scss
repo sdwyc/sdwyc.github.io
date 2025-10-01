@@ -197,6 +197,20 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
+.profile.float-center{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.profile.float-top {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .profile.float-right {
   margin-left: 1rem;
 }
@@ -234,10 +248,11 @@ ul.task-list input[type="checkbox"] {
 // Navbar customization
 
 .navbar {
-  box-shadow: none;
+  box-shadow: 0px 2px 5px 0px var(--global-divider-color); // none;
   border-bottom: 1px solid var(--global-divider-color);
   background-color: var(--global-bg-color);
-  opacity: 0.95;
+  opacity: 1.0;
+  padding: .2rem 1rem 0rem 1rem;
 }
 
 .navbar .dropdown-menu {

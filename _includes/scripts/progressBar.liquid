@@ -50,6 +50,7 @@
 
     function initializeProgressElement() {
       let navbarHeight = $('#navbar').outerHeight(true);
+      progressBar.css({height: navbarHeight / 20 + 'px', top: navbarHeight });
       $('body').css({ 'padding-top': navbarHeight });
       $('progress-container').css({ 'padding-top': navbarHeight });
       progressBar.css({ top: navbarHeight });
