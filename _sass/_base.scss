@@ -197,11 +197,18 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
+.profile-caption{
+  text-align: center;
+  font-size: 2rem;
+  width: 100%;
+  margin: -0.5rem 0;
+}
+
 .profile.float-center{
   display: flex;
   justify-content: center;
   width: 100%;
-  margin: 1rem 0;
+  margin: .5rem 0;
 }
 
 .profile.float-top {
