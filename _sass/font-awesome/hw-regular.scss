@@ -1,0 +1,126 @@
+@import "functions";
+@import "variables";
+
+$hw-font-name: "Homework Signature" !default;
+$hw-css-prefix: "hw" !default;
+$hw-font-path: "../fonts" !default;
+$hw-font-display: block !default; // 字体加载策略: swap, block, fallback, optional
+
+// ======================
+// 字体定义
+// ======================
+@font-face {
+  font-family: #{$hw-font-name};
+  font-style: italic;
+  font-weight: 100; // 签名字体通常只有一种字重
+  font-display: $hw-font-display;
+  src: 
+    url("#{$fa-font-path}/Australia Custom.woff2") format("woff2"),
+    url('#{$fa-font-path}/Australia Custom.ttf') format('truetype');
+}
+
+// ======================
+// CSS 变量定义
+// ======================
+:root {
+  --#{$hw-css-prefix}-font-family: "#{$hw-font-name}";
+  --#{$hw-css-prefix}-font-signature: normal 400 1em/1 "#{$hw-font-name}";
+}
+
+// ======================
+// basic style
+// ======================
+.#{$hw-css-prefix} {
+  font-family: $hw-font-name;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  
+  speak: none;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+}
+
+// 签名样式类
+.#{$hw-css-prefix}-signature {
+  @extend .#{$hw-css-prefix};
+  font-size: 2.0rem; // default font size
+  letter-spacing: 0.05em;
+  
+  // 添加签名效果
+  text-shadow: 
+    1px 1px 1px rgba(0, 0, 0, 0.1),
+    2px 2px 2px rgba(0, 0, 0, 0.05);
+  
+  // 响应式调整
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 576px) {
+    font-size: 1rem;
+  }
+}
+
+// ======================
+// 实用工具类
+// ======================
+// 不同尺寸
+.#{$hw-css-prefix}-xs { font-size: 0.75rem; }
+.#{$hw-css-prefix}-sm { font-size: 1.25rem; }
+.#{$hw-css-prefix}-md { font-size: 2rem; }
+.#{$hw-css-prefix}-lg { font-size: 3rem; }
+.#{$hw-css-prefix}-xl { font-size: 4rem; }
+
+// 颜色变体
+.#{$hw-css-prefix}-primary { color: #000; }
+.#{$hw-css-prefix}-secondary { color: #6c757d; }
+.#{$hw-css-prefix}-success { color: #28a745; }
+.#{$hw-css-prefix}-danger { color: #dc3545; }
+.#{$hw-css-prefix}-gold {
+  color: transparent;
+  background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+// ======================
+// 布局辅助类
+// ======================
+.#{$hw-css-prefix}-container {
+  display: inline-block;
+  position: relative;
+  
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #000, transparent);
+    opacity: 0.3;
+  }
+}
+
+// ======================
+// 使用示例
+// ======================
+/*
+<!-- 基本使用 -->
+<div class="hw hw-signature">Your Name</div>
+
+<!-- 带下划线效果 -->
+<div class="hw-container">
+  <div class="hw hw-signature hw-gold">Your Name</div>
+</div>
+
+<!-- 动画效果 -->
+<div class="hw hw-signature hw-animate">Your Name</div>
+
+<!-- 不同尺寸 -->
+<div class="hw hw-xs">Small Signature</div>
+<div class="hw hw-lg">Large Signature</div>
+*/

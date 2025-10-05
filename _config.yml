@@ -17,7 +17,7 @@ footer_text: >
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 # icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
-icon: cartoon_icon.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: robot_icon.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://sdwyc.github.io # the base hostname & protocol for your site
 baseurl:  # the subpath of your site, e.g. /blog/. Leave blank for root
@@ -31,7 +31,7 @@ back_to_top: true # set to false to disable the back to top button
 
 # repo color theme
 repo_theme_light: default # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
-repo_theme_dark: dark # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
+repo_theme_dark: synthwave #dark # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
 repo_trophies:
   enabled: true
   theme_light: flat # https://github.com/ryo-ma/github-profile-trophy
@@ -55,7 +55,7 @@ search_enabled: true
 socials_in_search: true
 
 # Dimensions
-max_width: 930px
+max_width: 1200px #930px
 
 # TODO: add layout settings (single page vs. multi-page)
 
@@ -113,7 +113,7 @@ youtube_id: yinchuanwang3591 # your youtube channel id (youtube.com/@<youtube_id
 zotero_username: # your zotero username
 
 contact_note: >
-  If you want to coorporate or consult with me, please email to sdwyc@mail.sdu.edu.cn.
+  If you want to coorporate or consult with me, please email to <a href="sdwyc@mail.sdu.edu.cn">sdwyc@mail.sdu.edu.cn</a>.
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
