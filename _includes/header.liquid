@@ -112,8 +112,8 @@
           {% if site.search_enabled %}
             <!-- Search -->
             <li class="nav-item">
-              <button id="search-toggle" title="Search" onclick="openSearchModal()">
-                <span class="nav-link">ctrl+k <i class="ti ti-search"></i></span>
+              <button id="search-toggle" title="Search (ctrl+k)" onclick="openSearchModal()">
+                <span class="nav-link"><i class="ti ti-search"></i></span>
               </button>
             </li>
           {% endif %}
@@ -121,9 +121,9 @@
             <!-- Toogle theme mode -->
             <li class="toggle-container">
               <button id="light-toggle" title="Change theme">
-                <i class="ti ti-sun-moon" id="light-toggle-system"></i>
-                <i class="ti ti-moon-filled" id="light-toggle-dark"></i>
+                {% comment %} <i class="ti ti-sun-moon" id="light-toggle-system"></i> {% endcomment %}
                 <i class="ti ti-sun-filled" id="light-toggle-light"></i>
+                <i class="ti ti-moon-filled" id="light-toggle-dark"></i>
               </button>
             </li>
           {% endif %}
