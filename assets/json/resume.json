@@ -1,10 +1,11 @@
 {
   "basics": {
-    "name": "Yinchuan Wang",
-    "label": "PhD",
+    "name": "Yinchuan Wang (王银川)",
+    "label": "Ph.D. in Robotics",
     "image": "author.jpg",
     "email": "sdwyc@mail.sdu.edu.cn",
-    "url": "https://alshedivat.github.io/al-folio/",
+    "wechat": "sdwyc_sduer",
+    // "url": "https://alshedivat.github.io/al-folio/",
     "summary": "I'm a interestor for robotics and computer arts. So, I am looking forward to coorporation or employment in my research field. If you are interesting in me, contact with me at any time",
     "location": {
       "address": "2712 Broadway St",
@@ -50,9 +51,18 @@
       "location": "Jinan, China",
       "url": "https://www.en.sdu.edu.cn/",
       "area": "Pattern Reconization and Intelligent System",
-      "studyType": "PhD",
-      "startDate": "2021-09-01",
+      "studyType": "Ph.D.",
+      "startDate": "2023-09-01",
       "endDate": "now"
+    },
+    {
+      "institution": "Shandong University, China",
+      "location": "Jinan, China",
+      "url": "https://www.en.sdu.edu.cn/",
+      "area": "Control Science and Theory",
+      "studyType": "Master",
+      "startDate": "2021-09-01",
+      "endDate": "2023-06-01"
     },
     {
       "institution": "Shandong University of Science and Technology, China",
