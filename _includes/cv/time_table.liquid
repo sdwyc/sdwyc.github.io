@@ -3,7 +3,7 @@
     <li class="list-group-item">
       <div class="row">
         {% if content.year %}
-          <div class="col-xs-2 cl-sm-2 col-md-2 text-center" style="width: 75px">
+          <div class="col-xs-2 col-sm-2 col-md-2 text-center" style="width: 75px">
             <table class="table-cv">
               <tbody>
                 <tr>
@@ -102,9 +102,15 @@
                 {% if item.link %}
                   <div class="container-link-button">
                     {% if item.linkname %}
-                      <a href="{{ item.link }}" target="_blank" class="btncv z-depth-0">{{ item.linkname }}</a>
+                      <a
+                        href="{{ item.link }}"
+                        target="_blank"
+                        class="btncv z-depth-0">{{ item.linkname }}</a>
                     {% else %}
-                      <a href="{{ item.link }}" target="_blank" class="btncv z-depth-0">doc</a>
+                      <a
+                        href="{{ item.link }}"
+                        target="_blank"
+                        class="btncv z-depth-0">doc</a>
                     {% endif %}
                   </div>
                 {% endif %}

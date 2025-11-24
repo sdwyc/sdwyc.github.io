@@ -47,31 +47,34 @@
   ],
   "education": [
     {
-      "institution": "Shandong University, China",
+      "institution": "Shandong University (SDU)",
       "location": "Jinan, China",
       "url": "https://www.en.sdu.edu.cn/",
       "area": "Pattern Reconization and Intelligent System",
       "studyType": "Ph.D.",
       "startDate": "2023-09-01",
-      "endDate": "now"
+      "endDate": "now",
+      "logo": "cv/SDU.png"
     },
     {
-      "institution": "Shandong University, China",
+      "institution": "Shandong University (SDU)",
       "location": "Jinan, China",
       "url": "https://www.en.sdu.edu.cn/",
       "area": "Control Science and Theory",
       "studyType": "Master",
       "startDate": "2021-09-01",
-      "endDate": "2023-06-01"
+      "endDate": "2023-06-01",
+      "logo": "cv/SDU.png"
     },
     {
-      "institution": "Shandong University of Science and Technology, China",
+      "institution": "Shandong University of Science and Technology (SDUST)",
       "location": "Taian, China",
       "url": "https://en.sdust.edu.cn/",
       "area": "Electrical Engineering and Automation",
       "studyType": "Bechelor",
       "startDate": "2016-09-01",
-      "endDate": "2020-06-01"
+      "endDate": "2020-06-01",
+      "logo": "cv/SDUST.png"
     }
   ],
   "awards": [
