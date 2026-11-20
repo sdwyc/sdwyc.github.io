@@ -34,6 +34,30 @@ a.btncv:hover {
 }
 
 /*****************************
+ * CV PDF download icons (header)
+ *****************************/
+
+span.cv-pdf-links {
+  float: right;
+  display: inline-flex;
+  gap: 0.75rem;
+}
+
+a.cv-pdf-en {
+  color: #c0392b;
+}
+
+a.cv-pdf-zh {
+  color: #2b6cb0;
+}
+
+a.cv-pdf-en:hover,
+a.cv-pdf-zh:hover {
+  opacity: 0.75;
+  text-decoration: none;
+}
+
+/*****************************
  * CV TIME_TABLE styles
  *****************************/
 

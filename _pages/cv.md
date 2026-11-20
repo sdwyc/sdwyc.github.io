@@ -4,8 +4,7 @@ permalink: /cv/
 title: CV
 nav: true
 nav_order: 5
-cv_pdf: example_pdf.pdf
-description: This is a my resume for job-finding and coorporation. You can also access the PDF version at the top pdf download button.
+description: This is my resume for job-seeking and collaboration. The English and Chinese PDF versions are available from the icons at the top right.
 toc:
   sidebar: left
 ---
