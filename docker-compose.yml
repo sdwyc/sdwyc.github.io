@@ -1,13 +1,20 @@
-version: "3"
-# this file uses prebuilt image in dockerhub
+# 本地开发用：从仓库内的 Dockerfile 构建（已锁定 Ruby 3.3）
+# 用法: docker compose up
 services:
   jekyll:
-    image: amirpourmand/al-folio:latest
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # BuildKit 的默认沙箱网络在国内网络下经常卡在 gem 元数据抓取，
+      # 使用宿主网络可避免这个问题
+      network: host
+    image: sdwyc-github-io:local
     ports:
-      - 8080:8080
-      - 35729:35729
+      - "8080:8080"   # Jekyll 站点
+      - "35729:35729" # LiveReload
     volumes:
       - .:/srv/jekyll
     environment:
-      - JEKYLL_ENV=development
+      JEKYLL_ENV: development
+    tty: true
+    stdin_open: true

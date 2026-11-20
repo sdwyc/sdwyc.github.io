@@ -49,18 +49,28 @@ Using Docker to install Jekyll and Ruby dependencies is the easiest way.
 You need to take the following steps to get `al-folio` up and running on your local machine:
 
 - First, install [docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/).
-- Finally, run the following command that will pull the latest pre-built image from DockerHub and will run your website.
+- Finally, run the following command to build the image locally and start your website.
 
 ```bash
-$ docker compose pull
-$ docker compose up
+$ docker compose up --build
 ```
+
+> This repo builds its own image from the `Dockerfile`, with the whole toolchain pinned:
+> **Ubuntu 24.04 LTS** + **Ruby 3.2.3** + **Bundler 2.5.22** + **Node 18** + ImageMagick 6.9.12,
+> and every gem version fixed by the committed `Gemfile.lock`. The build asserts these versions and
+> fails loudly if the Ubuntu archive drifts. Do **not** run `docker compose pull`: the upstream
+> `amirpourmand/al-folio` image is built from `ruby:latest`, which is now Ruby 4.0 and crashes on startup
+> (`cannot load such file -- ostruct`).
+>
+> To bump a version: change the corresponding `ARG` in the `Dockerfile` (e.g. `UBUNTU_VERSION`,
+> `RUBY_VERSION_REQUIRED`, `BUNDLER_VERSION`, `NODE_VERSION_REQUIRED`), then regenerate the lock with
+> `bundle lock --add-platform ...`/`bundle update` inside the new image.
 
 Note that when you run it for the first time, it will download a docker image of size 400MB or so. To see the template running, open your browser and go to `http://localhost:8080`. You should see a copy of the theme's demo website.
 
 Now, feel free to customize the theme however you like (don't forget to change the name!). Also, your changes should be automatically rendered in real-time (or maybe after a few seconds).
 
-> Beta: You can also use the slimmed docker image with a size below 100MBs and exact same functionality. Just use `docker compose -f docker-compose-slim.yml up`
+> Beta: You can also use the slimmed setup with `docker compose -f docker-compose-slim.yml up` (it builds the same local Dockerfile).
 
 ### Build your own docker image
 

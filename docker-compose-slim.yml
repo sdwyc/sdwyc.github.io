@@ -1,13 +1,17 @@
-version: "3"
-# this file uses prebuilt image in dockerhub
+# 与 docker-compose.yml 等价：上游 amirpourmand/al-folio:slim 预构建镜像同样基于
+# ruby:latest（Ruby 4.0），启动即崩溃，因此这里改为构建本地 Dockerfile。
+# 用法: docker compose -f docker-compose-slim.yml up
 services:
   jekyll:
-    image: amirpourmand/al-folio:slim
-    #build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      network: host
+    image: sdwyc-github-io:local
     ports:
-      - 8080:8080
-      - 35729:35729
+      - "8080:8080"
+      - "35729:35729"
     volumes:
       - .:/srv/jekyll
     environment:
-      - JEKYLL_ENV=development
+      JEKYLL_ENV: development

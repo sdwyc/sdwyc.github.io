@@ -220,6 +220,8 @@ kramdown:
 include: ["_pages"]
 exclude:
   - bin/
+  - assets/jupyter/ # 演示用 notebook，没有 nbconvert 时会导致构建中断
+  - debug_log/ # internal change logs, not published
   - CONTRIBUTING.md
   - CUSTOMIZE.md
   - Dockerfile
