@@ -82,7 +82,7 @@ jobs:
           python-version: "3.13"
           cache: "pip" # caching pip dependencies
       - name: Update _config.yml ⚙️
-        uses: fjogeleit/yaml-update-action@main
+        uses: fjogeleit/yaml-update-action@v0.17.0
         with:
           commitChange: false
           valueFile: "_config.yml"
@@ -94,9 +94,13 @@ jobs:
           pip3 install --upgrade nbconvert
           export JEKYLL_ENV=production
           bundle exec jekyll build
+      - name: Setup Node.js ⚙️
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
       - name: Purge unused CSS 🧹
         run: |
-          npm install -g purgecss
+          npm install -g purgecss@6.0.0
           purgecss -c purgecss.config.js
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
