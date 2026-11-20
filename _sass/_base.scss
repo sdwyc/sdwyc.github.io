@@ -386,6 +386,14 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
+// Center nav items on one line (the theme icon is taller due to its 17px padding).
+// Only for the horizontal bar; the collapsed mobile menu is left untouched.
+@media (min-width: 576px) {
+  .navbar-nav {
+    align-items: center;
+  }
+}
+
 #light-toggle,
 #search-toggle {
   padding: 0;
