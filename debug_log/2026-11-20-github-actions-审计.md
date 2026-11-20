@@ -91,6 +91,82 @@ curl -s https://registry.npmjs.org/purgecss/9.1.0 | jq .engines
 # → {"node": ">=22.12.0"}
 ```
 
+---
+
+## 2026-11-20 20:53 实际推送后的真实报错（本文件第一节的结论需修正）
+
+推送 commit `443d652` 后，Actions 立刻暴露出**真实失败**（此前 API 里看不到，因为历史 run 已过保留期）：
+
+| 运行 | event | 结果 |
+|---|---|---|
+| Deploy site | push | **failure** |
+| `.github/workflows/docker-slim.yml` | push | **failure（0 个 job）** |
+| Docker Image CI / broken links | push | skipped（上游门禁） |
+
+### 报错原文（Deploy site → Setup Ruby 💎）
+
+```
+[command]/opt/hostedtoolcache/Ruby/3.3.5/x64/bin  (PATH 已设置)
+Downloading Ruby
+https://github.com/ruby/ruby-builder/releases/download/ruby-3.3.5/ruby-3.3.5-ubuntu-26.04-x64.tar.gz
+##[error]Error: Unavailable version 3.3.5 for ruby on ubuntu-26.04
+Only the latest patch release of each series is built for newer runner images.
+ruby-3.3.14 is available on ubuntu-26.04: use ruby-version: '3.3.14', or '3.3' to always use the latest 3.3.x release.
+Cause: Unexpected HTTP response: 404
+```
+
+### 原因分析
+
+1. **`ubuntu-latest` 已滚动到 ubuntu-26.04**，而 ruby-builder 只为新镜像编译**每个系列的最新补丁版**
+   （3.3 系列现为 3.3.14）。`ruby-version: "3.3.5"` 这种精确到补丁的写法在新镜像上必然 404，
+   属于"写死版本"与"runner 镜像滚动"的冲突。CI 在第 3 步就失败，后面全部 skipped。
+
+2. **`docker-slim.yml` 每次 push 都产生一条 0 job 的失败记录**，且 Actions 列表里它的名字显示为
+   文件路径（而不是 `Docker Slim`）—— 这是 GitHub 解析该 workflow 失败的典型特征。
+   该文件只做上游发布（`amirpourmand/al-folio`）且 job 带
+   `if: github.repository_owner == 'alshedivat'`，在本仓库**永远不可能成功**。
+
+### 改动做法
+
+```diff
+# deploy.yml
+-          ruby-version: "3.3.5"
++          ruby-version: "3.3"
+# axe.yml / broken-links-site.yml（同样问题，值是 3.2.2）
+-          ruby-version: "3.2.2"
++          ruby-version: "3.2"
+# 删除上游专用、无法解析的工作流
+- .github/workflows/docker-slim.yml
+```
+
+为什么用系列号 `3.3` 而不是精确锁 `3.3.14`：gem 版本已由 `Gemfile.lock` 硬锁，
+Ruby 补丁号漂移不影响依赖解析；而写死补丁号会在 ruby-builder 更新补丁后**再次 404**。
+上游 release 提示也明确推荐 `'3.3'`。
+
+### 验证方式
+
+推 `443d652` 后 API 读取运行结果（这是唯一可信的验证，本地构建通过不代表 CI 通过）：
+
+```bash
+curl -s "https://api.github.com/repos/sdwyc/sdwyc.github.io/actions/runs?per_page=20"
+# 443d652: Deploy site -> failure（Setup Ruby）
+#          docker-slim.yml -> failure（0 jobs）
+
+# 拉具体失败 step 的日志（需 token，且必须用 Authorization: token，Bearer 会 401）
+curl -s -H "Authorization: token $GH" \
+  "https://api.github.com/repos/.../actions/runs/44738319712/jobs"   # 定位到 step 3
+curl -sL "$(curl -s -o /dev/null -w '%{redirect_url}' -H 'Authorization: token '$GH \
+  'https://api.github.com/repos/.../actions/jobs/<jobid>/logs')"      # 302 → blob，拿到纯文本日志
+```
+
+### 影响面 / 回滚
+
+- 影响：CI 的 Ruby 选择方式、移除 1 个无用工作流；站点构建产物逻辑不变。
+- 回滚：`git revert d4f38e2 d550830`。
+- 遗留：CodeQL 仍处于 `disabled_inactivity`（服务端状态），需人工 Enable。
+
+---
+
 ### 影响面 / 回滚
 
 - 影响：仅 `Deploy site` 工作流的第 3、4 个 step；不改变站点产物逻辑。
