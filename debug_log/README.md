@@ -38,3 +38,4 @@
 | 2026-11-20 | 固定系统与软件版本（Ubuntu 24.04 + 全链路 pin） | [2026-11-20-ubuntu24.04-版本固定.md](./2026-11-20-ubuntu24.04-版本固定.md) |
 | 2026-11-20 | 导航栏 dark mode 图标与文字垂直对齐 | [2026-11-20-导航栏对齐.md](./2026-11-20-导航栏对齐.md) |
 | 2026-11-20 | GitHub Actions 审计与 CI 链路加固 | [2026-11-20-github-actions-审计.md](./2026-11-20-github-actions-审计.md) |
+| 2026-11-25 | 论文引用数显示 N/A（Scholar 反爬 → 改本地数据） | [2026-11-25-scholar-citations.md](./2026-11-25-scholar-citations.md) |

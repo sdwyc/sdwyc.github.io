@@ -1,78 +1,57 @@
-require "active_support/all"
-require 'nokogiri'
-require 'open-uri'
+# frozen_string_literal: true
 
-module Helpers
-  extend ActiveSupport::NumberHelper
-end
-
+# Renders the Google Scholar citation count for one bibliography entry.
+#
+# Counts come from _data/scholar_citations.yml, so the build never touches
+# scholar.google.com (the per-article endpoint answers with an anti-bot
+# redirect, which is why this used to render N/A everywhere).
+#
+# Refresh the cache with:  python3 bin/update_scholar_citations.py
 module Jekyll
   class GoogleScholarCitationsTag < Liquid::Tag
-    Citations = { }
+    @warned = []
+
+    class << self
+      attr_reader :warned
+    end
 
     def initialize(tag_name, params, tokens)
       super
-      splitted = params.split(" ").map(&:strip)
-      @scholar_id = splitted[0]
-      @article_id = splitted[1]
+      @userid_expr, @article_expr = params.split(" ").map(&:strip)
     end
 
     def render(context)
-      article_id = context[@article_id.strip]
-      scholar_id = context[@scholar_id.strip]
-      article_url = "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=#{scholar_id}&citation_for_view=#{scholar_id}:#{article_id}"
+      userid = resolve(context, @userid_expr)
+      article = resolve(context, @article_expr)
 
-      begin
-          # If the citation count has already been fetched, return it
-          if GoogleScholarCitationsTag::Citations[article_id]
-            return GoogleScholarCitationsTag::Citations[article_id]
-          end
+      counts = context.registers[:site].data.dig("scholar_citations", userid)
+      value = counts && counts[article]
 
-          # Sleep for a random amount of time to avoid being blocked
-          sleep(rand(1.5..3.5))
-
-          # Fetch the article page
-          doc = Nokogiri::HTML(URI.open(article_url, "User-Agent" => "Ruby/#{RUBY_VERSION}"))
-
-          # Attempt to extract the "Cited by n" string from the meta tags
-          citation_count = 0
-
-          # Look for meta tags with "name" attribute set to "description"
-          description_meta = doc.css('meta[name="description"]')
-          og_description_meta = doc.css('meta[property="og:description"]')
-
-          if !description_meta.empty?
-            cited_by_text = description_meta[0]['content']
-            matches = cited_by_text.match(/Cited by (\d+[,\d]*)/)
-
-            if matches
-              citation_count = matches[1].sub(",", "").to_i
-            end
-
-          elsif !og_description_meta.empty?
-            cited_by_text = og_description_meta[0]['content']
-            matches = cited_by_text.match(/Cited by (\d+[,\d]*)/)
-
-            if matches
-              citation_count = matches[1].sub(",", "").to_i
-            end
-          end
-
-        citation_count = Helpers.number_to_human(citation_count, :format => '%n%u', :precision => 2, :units => { :thousand => 'K', :million => 'M', :billion => 'B' })
-
-      rescue Exception => e
-        # Handle any errors that may occur during fetching
-        citation_count = "N/A"
-
-        # Print the error message including the exception class and message
-        puts "Error fetching citation count for #{article_id}: #{e.class} - #{e.message}"
+      if value.nil?
+        warn_once("#{userid}/#{article} is not in _data/scholar_citations.yml " \
+                  "(run bin/update_scholar_citations.py)")
+        return "N/A"
       end
 
+      value.to_i
+    end
 
-      GoogleScholarCitationsTag::Citations[article_id] = citation_count
-      return "#{citation_count}"
+    private
+
+    # Accepts both plain variables ("site.scholar_userid") and dotted paths
+    # ("entry.google_scholar_id").
+    def resolve(context, expr)
+      value = Liquid::VariableLookup.new(expr).evaluate(context)
+      (value.nil? ? expr : value).to_s.strip
+    end
+
+    def warn_once(message)
+      return if self.class.warned.include?(message)
+
+      self.class.warned << message
+      Jekyll.logger.warn "Scholar:", message
     end
   end
 end
 
-Liquid::Template.register_tag('google_scholar_citations', Jekyll::GoogleScholarCitationsTag)
+Liquid::Template.register_tag("google_scholar_citations", Jekyll::GoogleScholarCitationsTag)
